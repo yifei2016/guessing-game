@@ -1,6 +1,10 @@
 from random import randint
+
+high_score = dict()
+
 def start():
 	print("Hello and welcome to this guessing game! \nStart guessing, it's a number between 1 and 1000...")
+	
 	correct_number = randint(1,1000) 
 	number=input() 
 	count=1
@@ -22,11 +26,17 @@ def start():
 		count = count + 1
    	
    	print '**** CORRECT!\nYou guessed the correct number in', count, 'guesses'
-	input('Please enter your name:\n')
+	name = input('Please enter your name:\n')
+	high_score[name] = count
 	answer = input('Do you want to play again?(y/n)\n')
 	if answer == 'n':
 		print('**** The game is over')
-	elif answer == 'y':
+	elif answer == 'y':	
+		print('Current highscore list:')
+		print('Name    Guesses')
+		for name in high_score:
+			print name, '    ', high_score[name]
+		
 		start()
 
 
