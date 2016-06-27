@@ -1,6 +1,9 @@
 from random import randint
 
 high_score = dict()
+f = open('results.txt','w')
+f.write('Current highscore list\n')
+f.write('Name    Guesses\n')
 
 def start():
 	print("Hello and welcome to this guessing game! \nStart guessing, it's a number between 1 and 1000...")
@@ -31,12 +34,16 @@ def start():
 	answer = input('Do you want to play again?(y/n)\n')
 	if answer == 'n':
 		print('**** The game is over')
+		f.close()
 	elif answer == 'y':	
 		print('Current highscore list:')
 		print('Name    Guesses')
-		for name in high_score:
-			print name, '    ', high_score[name]
+		print name, '    ', high_score[name]
 		
+		for name in high_score:
+			f.write(name + '    ' + str(high_score[name]))
+			f.write('\n')
+
 		start()
 
 
